@@ -1,0 +1,71 @@
+<div class="lg:p-5 lg:pt-1 lg:pb-0">
+  <p-menubar [model]="items" styleClass="shadow-0 border-0">
+    <ng-template #start>
+      <p-image src="assets/img/dndcapitallogo.png" alt="logo" width="250" />
+    </ng-template>
+    <ng-template #item let-item let-root="root">
+      <a
+        pRipple
+        class="flex items-center p-menubar-item-link"
+        (click)="router.navigate([item.routerLink], { fragment: item.fragment })" 
+      >
+        <span [class]="item.icon"></span>
+        <span>{{ item.label }}</span>
+        <i
+          *ngIf="item.items"
+          [ngClass]="['ml-auto pi', root ? 'pi-angle-down' : 'pi-angle-right']"
+        ></i>
+      </a>
+    </ng-template>
+    <ng-template #end>
+        <div class="flex flex-col gap-2 items-center">
+            <div class="">
+                <!-- TODO: pasar a varible de enviroment -->
+                <p class="text-sm ">infodndcapital&#64;gmail.com</p>
+            </div>
+            <div class="flex gap-1">
+              <p-button
+                icon="pi pi-linkedin"
+                [rounded]="true"
+                size="small"
+                styleClass="text-gray-700"
+              />
+              <p-button
+                icon="pi pi-facebook"
+                [rounded]="true"
+                size="small"
+                styleClass="text-gray-700"
+              />
+              <p-button
+                icon="pi pi-instagram"
+                [rounded]="true"
+                size="small"
+                styleClass="text-gray-700"
+              />
+            </div>
+        </div>
+    </ng-template>
+  </p-menubar>
+</div>
+
+
+<p-button
+  *ngIf="showScrollButton"
+  icon="pi pi-arrow-up"
+  [rounded]="true"
+  (click)="scrollToTop()"
+  styleClass="fixed bottom-24 right-6 z-50"
+  [style]="{ 'width': '3.5rem', 'height': '3.5rem' }"
+  severity="secondary"
+  [raised]="true"
+/>
+
+<!-- Botón flotante de WhatsApp -->
+<p-button
+  icon="pi pi-whatsapp"
+  [rounded]="true"
+  (click)="openWhatsApp()"
+  styleClass="fixed bottom-6 right-6 z-50"
+  size="large"
+  severity="success"
+/>
