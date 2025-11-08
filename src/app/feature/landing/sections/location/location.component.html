@@ -1,0 +1,105 @@
+<!-- ABOUT -->
+<section id="locations" class="bg-location">
+  <div class="flex flex-col pt-5">
+    <!-- texto encabezado -->
+    <div class="flex flex-col text-center">
+      
+        <div class="bg-white/70 w-40 text-center mx-auto" >
+            <span class="text-lg font-bold text-[var(--custom-orange)]">
+              MOST POPULAR
+            </span>
+        </div>
+
+      <span class="text-white text-5xl font-bold">
+        Explore Our Top Locations
+      </span>
+
+      <div class="w-24 mx-auto " >
+        <p-divider styleClass="custom-divider" />
+
+      </div>
+      <span class="text-white text-lg font-semibold">
+        Discover our top short-stay homes ready for you today.
+      </span>
+    </div>
+
+    <!-- carrousel -->
+    <div class="card sm:p-2 lg:p-8 lg:pt-1 sm:pt-2">
+      <p-carousel
+        [value]="products"
+        [numVisible]="3"
+        [numScroll]="1"
+        [responsiveOptions]="responsiveOptions"
+        [showIndicators]="true"
+        [prevButtonProps]="{ severity: 'primary', rounded: true, text: false }"
+        [nextButtonProps]="{ severity: 'primary', rounded: true, text: false }"
+        autoplayInterval="3000"
+      >
+        <ng-template let-item #item>
+          <div class="h-full p-2">
+            <!-- 🔹 Altura fija + distribución vertical -->
+            <div
+              class="rounded m-2 p-5 bg-white flex flex-column justify-content-center a h-full shadow-2 border-round-xl min-h-30rem"
+            >
+              @if (!item.isFinal) {
+              <!-- Contenido -->
+              <div class="flex flex-column flex-grow-1 justify-content-between">
+                <!-- Imagen -->
+                <div class="mb-3">
+                  <div class="relative w-full overflow-hidden border-round-lg">
+                    <img
+                      src="{{ item.imageUrl }}"
+                      [alt]="item.name"
+                      class="w-full h-15rem object-cover border-round-lg"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <div
+                    class="mb-1 text-sm font-semibold text-[var(--custom-orange)] line-height-3"
+                  >
+                    {{ item.title }}
+                  </div>
+
+                  <div
+                    class="mb-2 text-xl font-semibold text-900 line-height-3"
+                  >
+                    {{ item.subtitle }}
+                  </div>
+
+                  <div class="mb-3 text-xl line-height-3 text-700">
+                    {{ item.detail }}
+                  </div>
+                </div>
+                <!-- Botones -->
+                <div class="flex justify-center mt-auto">
+                  <p-button
+                    icon="pi pi-angle-double-right"
+                    label="Book now"
+                    
+                    (click)="router.navigate(['/acommodations'])"
+                  />
+                </div>
+              </div>
+              }@else{
+              <div class="flex flex-col items-center justify-center w-ful">
+                <div>
+                  <i class="pi pi-search text-7xl p-5 text-[var(--custom-primary)]"></i>
+                </div>
+
+                <p-button
+                  icon="pi pi-eye"
+                  label="See more"
+                  size="large"
+                  
+                  (click)="router.navigate(['/acommodations'])"
+                />
+              </div>
+              }
+            </div>
+          </div>
+        </ng-template>
+      </p-carousel>
+    </div>
+  </div>
+</section>

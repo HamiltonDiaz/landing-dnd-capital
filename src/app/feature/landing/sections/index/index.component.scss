@@ -1,0 +1,18 @@
+.bg-index {
+    position: relative;
+    
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url('/assets/img/new-cover-a.jpg');
+        background-size: cover;
+        
+        @media (max-width: 1024px) {
+            opacity: 0.5; /* Ajusta este valor entre 0 y 1 */
+        }
+    }
+}

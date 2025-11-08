@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { TopbarComponent } from './components/topbar/topbar.component';
+import { FooterComponent } from "./components/footer/footer.component";
 
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [CommonModule,RouterOutlet,TopbarComponent],
+  imports: [CommonModule, RouterOutlet, TopbarComponent, FooterComponent],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss'
 })

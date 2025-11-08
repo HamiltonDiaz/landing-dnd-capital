@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 import { Menubar } from 'primeng/menubar';
 import { ImageModule } from 'primeng/image';
 import { ButtonModule } from 'primeng/button';
+import { Ripple } from 'primeng/ripple';
 
 @Component({
   selector: 'app-topbar',
@@ -23,6 +24,7 @@ import { ButtonModule } from 'primeng/button';
     ImageModule,
     ButtonModule,
     OverlayBadgeModule,
+    Ripple
   ],
   templateUrl: './topbar.component.html',
   styleUrl: './topbar.component.scss',
@@ -70,7 +72,7 @@ export class TopbarComponent implements OnInit {
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    // Mostrar el botón solo cuando se haya scrolleado más de 300px
+    // Mostrar el botón solo cuando se haya scrolleado más de 200px
     this.showScrollButton = window.pageYOffset > 200;
   }
 
@@ -79,8 +81,7 @@ export class TopbarComponent implements OnInit {
   }
 
   openWhatsApp() {
-    // Reemplaza con tu número de WhatsApp (incluye código de país sin +)
-    const phoneNumber = '573001234567'; // Ejemplo: Colombia
+    const phoneNumber = '573001234567'; // TODO: pasar a variable
     const message = encodeURIComponent(
       'Hola, me gustaría obtener más información'
     );

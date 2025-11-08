@@ -1,14 +1,15 @@
-<div id="about-us" class="flex bg-about-us xl:h-screen">
-  <!-- Espacio para ver foto -->
+<!-- ABOUT -->
+<section id="about-us" class="flex bg-about-us xl:my-8  ">
+  <!-- Espacio para imagen -->
   <div class="lg:w-2/5"></div>
 
   <!-- contenido -->
   <div
-    class="relative z-10 flex flex-col gap-3 justify-content-center px-3 sm:px-3 md:px-4 lg:px-8 lg:w-2/3"
+    class="relative flex flex-col gap-3 justify-center px-3 sm:px-3 md:px-4 lg:px-8 lg:w-2/3"
   >
-    <span class="text-2xl font-bold" style="color: #f26522"> ABOUT US </span>
+    <span class="text-2xl font-bold text-[var(--custom-orange)]"> ABOUT US </span>
+    <span class="text-3xl md:text-5xl font-bold"> About DND capital </span>
 
-    <span class="text-5xl font-bold"> About DND capital </span>
     <p class="text-2xl font-bold">
       For many years, we have been dedicated to creating exceptional living
       experiences and lasting value for our clients and guests.
@@ -30,13 +31,14 @@
       transforms every property into an opportunity — where business meets
       lifestyle, and where you can truly feel at home wherever you go.
     </p>
-    <div class="flex justify-content-end mt-2">
+
+    <div class="flex justify-end mt-2">
       <p-button
-        label="More About DND"        
-        icon="pi pi-users"       
-        severity="contrast" 
+        label="More About DND"
+        icon="pi pi-users"
+        severity="contrast"
         (click)="router.navigate(['/about-us'])"
       ></p-button>
     </div>
   </div>
-</div>
+</section>
