@@ -7,6 +7,7 @@ import { DividerModule } from 'primeng/divider';
 
 import { LocationDto } from 'src/app/core/dto/location.dto';
 import { LocaltionService } from 'src/app/core/services/locationservice';
+import { ResponsiveCarrouselOptionsDto } from 'src/app/core/dto/resposive-carrousel-options.dto';
 
 @Component({
   selector: 'app-location',
@@ -19,7 +20,7 @@ import { LocaltionService } from 'src/app/core/services/locationservice';
 export class LocationComponent implements OnInit {
   products: LocationDto[] =[];
 
-  responsiveOptions: any[] | undefined;
+  responsiveOptions: ResponsiveCarrouselOptionsDto[] =[];
 
   constructor(
     public router: Router,

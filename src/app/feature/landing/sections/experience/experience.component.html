@@ -1,10 +1,11 @@
+<section id="experience" >
 <div class="grid nested-grid">
-  <div class="col-4 p-5">
-    <p-image src="assets/img/tower.png" alt="logo" width="500" />
+  <div class="col-12 md:col-12 lg:col-4 p-5">
+    <p-image src="assets/img/tower.png" alt="image-tower" imageClass="w-full"/>
   </div>
-  <div class="col-8 p-5">
-    <div class="grid">
-      <div class="col-6">
+  <div class="col-12 sm:col-12 lg:col-8 p-5">
+    <div class="grid ">
+      <div class="col-12 sm:col-12 md:col-6 lg:col-6">
         <p-card>
           <app-diploma [widthSize]="'50px'" [heightSize]="'50px'" />
 
@@ -19,7 +20,7 @@
           </p>
         </p-card>
       </div>
-      <div class="col-6">
+      <div class="col-12 sm:col-12 md:col-6 lg:col-6">
         <p-card>
           <i class="pi pi-building text-5xl"></i>
           <p class="text-3xl mt-5">
@@ -33,7 +34,7 @@
           </p>
         </p-card>
       </div>
-      <div class="col-6">
+      <div class="col-12 sm:col-12 md:col-6 lg:col-6">
         <p-card>
           <app-wine-glasses [widthSize]="'60px'" [heightSize]="'60px'" />
 
@@ -48,7 +49,7 @@
           </p>
         </p-card>
       </div>
-      <div class="col-6">
+      <div class="col-12 sm:col-12 md:col-6 lg:col-6">
         <p-card>
           <app-diamond [widthSize]="'60px'" [heightSize]="'60px'" />
 
@@ -66,3 +67,5 @@
     </div>
   </div>
 </div>
+
+</section>
