@@ -1,5 +1,5 @@
 import { Component,  OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { DividerModule } from 'primeng/divider';
@@ -12,7 +12,7 @@ import { environment } from 'src/enviroments/environment';
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [CardModule, ButtonModule, DividerModule, GalleriaModule,ImageModule],
+  imports: [CardModule, ButtonModule, DividerModule, GalleriaModule, ImageModule, RouterLink],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',
   providers: [PhotoService],

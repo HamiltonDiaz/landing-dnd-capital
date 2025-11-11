@@ -1,9 +1,9 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router, RouterLink } from '@angular/router';
+import { filter } from 'rxjs';
 import { MenuItem } from 'primeng/api';
 import { BadgeModule } from 'primeng/badge';
 import { OverlayBadgeModule } from 'primeng/overlaybadge';
-
 import { AvatarModule } from 'primeng/avatar';
 import { InputTextModule } from 'primeng/inputtext';
 import { CommonModule } from '@angular/common';
@@ -11,8 +11,8 @@ import { Menubar } from 'primeng/menubar';
 import { ImageModule } from 'primeng/image';
 import { ButtonModule } from 'primeng/button';
 import { Ripple } from 'primeng/ripple';
+import { MessageModule } from 'primeng/message';
 import { ScrollService } from 'src/app/core/services/scroll.service';
-import { filter } from 'rxjs';
 import { environment } from 'src/enviroments/environment';
 
 @Component({
@@ -28,7 +28,9 @@ import { environment } from 'src/enviroments/environment';
     ButtonModule,
     OverlayBadgeModule,
     Ripple,
-  ],
+    MessageModule,
+    RouterLink
+],
   templateUrl: './topbar.component.html',
   styleUrl: './topbar.component.scss',
 })
@@ -37,11 +39,15 @@ export class TopbarComponent implements OnInit {
   showScrollButton: boolean = false;
   email: string = environment.contactEmail;
   phoneNumber: string = environment.phoneNumber;
+  visibleCookie: boolean = false;
 
   constructor(public router: Router, private scrollService: ScrollService) {}
   ngOnInit(): void {
     this.loadItems();
     this.handleFragmentScroll();
+
+    //this.visibleCookie = !(localStorage.getItem('cookiesAccepted') === 'true'); TODO: pendiente implementar
+    
   }
 
   handleFragmentScroll(): void {
@@ -89,7 +95,7 @@ export class TopbarComponent implements OnInit {
       {
         label: 'Contacts',
         icon: 'pi pi-address-book',
-        routerLink: '/contacts',
+        routerLink: '/contact-us',
       },
     ];
   }
@@ -126,5 +132,10 @@ export class TopbarComponent implements OnInit {
       'Hello, I would like to get more information.'
     );
     window.open(`https://wa.me/${this.phoneNumber}?text=${message}`, '_blank');
+  }
+
+  acceptCookies() {
+    this.visibleCookie = false;
+    localStorage.setItem('cookiesAccepted', 'true');
   }
 }

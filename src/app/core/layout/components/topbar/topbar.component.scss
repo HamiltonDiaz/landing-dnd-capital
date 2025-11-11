@@ -1,0 +1,13 @@
+::ng-deep .cookie-message {
+  .p-message-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 1rem;
+  }
+  
+  .p-message-detail {
+    flex: 1;
+  }
+}
