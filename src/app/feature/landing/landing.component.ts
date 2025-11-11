@@ -6,11 +6,12 @@ import { BookingSocialMediaComponent } from "./sections/booking-social-media/boo
 import { ExperienceComponent } from "./sections/experience/experience.component";
 import { PlannigComponent } from "./sections/plannig/plannig.component";
 import { TestimonialsComponent } from "./sections/testimonials/testimonials.component";
+import { BlogComponent } from "./sections/blog/blog.component";
 
 @Component({
   selector: 'app-landing',
   standalone: true,
-  imports: [IndexComponent, AboutUsComponent, LocationComponent, BookingSocialMediaComponent, ExperienceComponent, PlannigComponent, TestimonialsComponent],
+  imports: [IndexComponent, AboutUsComponent, LocationComponent, BookingSocialMediaComponent, ExperienceComponent, PlannigComponent, TestimonialsComponent, BlogComponent],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.scss'
 })

@@ -1,48 +1,58 @@
 <!-- HERO / INDEX -->
 <section
   id="index-home"
-  class="flex flex-wrap gap-0 justify-center bg-index lg:min-h-screen"
+  class="flex flex-col gap-0 g-index lg:min-h-screen bg-index"
 >
-  <div
-    class="relative flex flex-col gap-2 md:gap-3 justify-center px-3 sm:px-3 md:px-4 lg:px-8 lg:w-1/2"
-  >
-    <span class="text-2xl font-bold text-[var(--custom-orange)]"
-      >DND Capital Ltd</span
-    >
+  <div class="flex flex-wrap gap-0 p-5 lg:p-8 lg:pb-0 lg:mb-0">
+    <div class="relative flex flex-col gap-2 justify-center lg:w-1/2 lg:mt-8">
+      <span class="text-2xl font-bold text-[var(--custom-orange)]"
+        >DND Capital Ltd</span
+      >
 
-    <!-- Texto responsivo -->
-    <span class="text-4xl md:text-6xl font-bold"> Your Comfort</span>
-    <span class="text-4xl md:text-6xl font-bold" style="color: #fda942"
-      >In Every Destination</span
-    >
-    <span class="text-4xl md:text-6xl font-bold"> Start Here! </span>
+      <!-- Texto responsivo -->
+      <span class="text-4xl md:text-6xl font-bold"> Your Comfort</span>
+      <span class="text-4xl md:text-6xl font-bold" style="color: #fda942"
+        >In Every Destination</span
+      >
+      <span class="text-4xl md:text-6xl font-bold"> Start Here! </span>
 
-    <p class="text-xl">
-      Book your short or long stays in our premium serviced homes across London.
-      Enjoy every moment with comfort, style, and a true home feeling!
-    </p>
+      <p class="text-xl">
+        Book your short or long stays in our premium serviced homes across
+        London. Enjoy every moment with comfort, style, and a true home feeling!
+      </p>
 
-    <div class="flex gap-3 mt-5">
-      <p-button
-        label="Contact Us"
-        icon="pi pi-phone"
-        severity="contrast"
-        (click)="router.navigate(['/acommodations'])"
-      ></p-button>
+      <div class="flex gap-3 mt-5">
+        <p-button
+          label="Contact Us"
+          icon="pi pi-phone"
+          severity="contrast"
+          (click)="router.navigate(['/acommodations'])"
+        ></p-button>
 
-      <p-button
-        label="Book a Room"
-        icon="pi pi-angle-double-right"
-        (click)="router.navigate(['/acommodations'])"
-      ></p-button>
+        <p-button
+          label="Book a Room"
+          icon="pi pi-angle-double-right"
+          (click)="router.navigate(['/acommodations'])"
+        ></p-button>
+      </div>
+    </div>
+
+    <div class="lg:w-1/2">
+      <!-- Espacio para imagen/hero. Usa relative y un elemento interno absolute si quieres colocar imagen sin solapar -->
+      <div
+        class="h-64 md:h-full w-full bg-cover bg-center hidden lg:block"
+        
+      ></div>
     </div>
   </div>
-
-  <div class="lg:w-1/2">
-    <!-- Espacio para imagen/hero. Usa relative y un elemento interno absolute si quieres colocar imagen sin solapar -->
-    <div
-      class="h-64 md:h-full w-full bg-cover bg-center"
-      style="background-image: url('/assets/hero.jpg')"
-    ></div>
+  <div>
+    <img
+      [width]="'700'"
+      [height]="'400'"
+      [align]="'center'"
+      src="assets/img/cover.png"
+      alt="Tablet banner"
+      class="hidden md:block lg:hidden mx-auto "
+    />
   </div>
 </section>

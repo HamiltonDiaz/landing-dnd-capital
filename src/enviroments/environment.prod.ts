@@ -1,6 +1,6 @@
 export const environment = {
-  production: false,
-  url: 'http://localhost:3000/api/', 
+  production: true,
+  url: 'http://localhost:3000/api/',
   contactEmail: 'infodndcapital@gmail.com',
   phoneNumber: '447737879714',
   social: {
@@ -9,5 +9,6 @@ export const environment = {
     instagram: 'https://instagram.com/miusuario',
     airbnb: 'https://airbnb.com/miusuario',
     bookingcom: 'https://booking.com/miusuario',
-    tripadvisor: 'https://tripadvisor.com/miusuario'
-  }}
+    tripadvisor: 'https://tripadvisor.com/miusuario',
+  },
+};

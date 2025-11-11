@@ -1,0 +1,114 @@
+<section class="bg-blog">
+  <div class="grid nested-grid p-3 lg:p-8 lg:pb-0">
+    <div class="col-12">
+      <div class="flex flex-wrap gap-3 justify-content-between">
+        <div class="flex flex-col">
+          <span class="text-lg font-bold text-[var(--custom-orange)]"
+            >Blog</span
+          >
+          <span class="text-3xl font-bold">Follow us on our social media</span>
+
+          <div class="w-24">
+            <p-divider styleClass="custom-divider-blog" />
+          </div>
+
+          <span class="text-xl text-gray-500 font-semibold">
+            We write about unique stays, comfort, and modern living across
+            London.
+          </span>
+        </div>
+
+        <div id="blog" class="flex gap-3 items-center">
+          <div class="bg-[var(--custom-primary)] p-3 rounded-xl">
+            <i class="pi pi-phone text-3xl text-white"> </i>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-2xl font-bold">Need a Consultation?</span>
+            <span class="text-lg font-semibold text-gray-600">Contact us</span>            
+            <a
+              href="mailto:infodndcapital@gmail.com"
+              class="text-orange-500 font-bold"
+              href="mailto:{{ email }}"
+              >{{ email }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Primera columna: primeros 3 items -->
+    <div class="col-12 lg:col-6">
+      <div class="flex flex-col gap-2">
+        <div class="w-full">
+          <p-divider />
+        </div>
+        <ng-container *ngFor="let item of blogData.slice(0, 3)">
+          <!-- imagen -->
+          <div *ngIf="item.onlyImage" class="md:p-3 lg:p-5">
+            <div class="rounded-xl overflow-hidden">
+              <p-image
+                src="{{ item.imageUrl }}"
+                alt="{{ item.alt }}"
+                class="w-full"
+                imageClass="w-full h-[350px] object-cover object-bottom"
+              />
+            </div>
+          </div>
+
+          <!-- Texto -->
+          <div *ngIf="!item.onlyImage" class="flex flex-col gap-2">
+            <span class="text-[var(--custom-orange)] font-semibold text-lg">
+              {{ item.date }}
+            </span>
+            <span class="text-2xl font-bold text-gray-800">
+              {{ item.title }}
+            </span>
+            <span class="text-gray-600 text-2xl">
+              {{ item.description }}
+            </span>
+          </div>
+          <div class="w-full">
+            <p-divider />
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <!-- Segunda columna: últimos 3 items -->
+    <div class="col-12 lg:col-6">
+      <div class="flex flex-col gap-2">
+        <ng-container *ngFor="let item of blogData.slice(3, 6)">
+          <!-- imagen -->
+          <div *ngIf="item.onlyImage" class="md:p-3 lg:p-5">
+            <div class="rounded-xl overflow-hidden">
+              <p-image
+                src="{{ item.imageUrl }}"
+                alt="{{ item.alt }}"
+                class="w-full"
+                imageClass="w-full h-[350px] object-cover object-bottom"
+              />
+            </div>
+          </div>
+
+          <!-- Texto -->
+          <div *ngIf="!item.onlyImage" class="flex flex-col gap-2">
+            <span class="text-[var(--custom-orange)] font-semibold text-lg">
+              {{ item.date }}
+            </span>
+            <span class="text-2xl font-bold text-gray-800">
+              {{ item.title }}
+            </span>
+            <span class="text-gray-600 text-2xl">
+              {{ item.description }}
+            </span>
+          </div>
+          <div class="w-full">
+            <p-divider />
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-blog-final h-[400px] w-full"></div>
+</section>

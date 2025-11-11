@@ -7,6 +7,7 @@ import { GalleriaModule } from 'primeng/galleria';
 import { ImageModule } from 'primeng/image';
 import { PhotoService } from 'src/app/core/services/photoservice';
 import { imagesDto } from 'src/app/core/dto/images.dto';
+import { environment } from 'src/enviroments/environment';
 
 @Component({
   selector: 'app-footer',
@@ -18,10 +19,9 @@ import { imagesDto } from 'src/app/core/dto/images.dto';
 })
 export class FooterComponent implements OnInit {
   displayCustom: boolean = false;
-
   activeIndex: number = 0;
-
   images: imagesDto[] = [];
+  email:string = environment.contactEmail;
 
   constructor(public router: Router, private photoService: PhotoService) {}
 

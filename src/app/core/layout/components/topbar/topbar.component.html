@@ -6,7 +6,7 @@
     <ng-template #item let-item let-root="root">
       <a
         pRipple
-        class="flex items-center p-menubar-item-link"
+        class="flex items-center p-menubar-item-link rounded-xl hover:bg-primary hover:text-white  transition-colors duration-300"
         (click)="router.navigate([item.routerLink], { fragment: item.fragment })" 
       >
         <span [class]="item.icon"></span>
@@ -20,8 +20,7 @@
     <ng-template #end>
         <div class="flex flex-col gap-2 items-center">
             <div class="">
-                <!-- TODO: pasar a varible de enviroment -->
-                <p class="text-sm ">infodndcapital&#64;gmail.com</p>
+                <a class="text-sm" href="mailto:{{email}}" >{{email}}</a>
             </div>
             <div class="flex gap-1">
               <p-button

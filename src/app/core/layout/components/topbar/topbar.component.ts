@@ -1,5 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { BadgeModule } from 'primeng/badge';
 import { OverlayBadgeModule } from 'primeng/overlaybadge';
@@ -11,6 +11,9 @@ import { Menubar } from 'primeng/menubar';
 import { ImageModule } from 'primeng/image';
 import { ButtonModule } from 'primeng/button';
 import { Ripple } from 'primeng/ripple';
+import { ScrollService } from 'src/app/core/services/scroll.service';
+import { filter } from 'rxjs';
+import { environment } from 'src/enviroments/environment';
 
 @Component({
   selector: 'app-topbar',
@@ -24,7 +27,7 @@ import { Ripple } from 'primeng/ripple';
     ImageModule,
     ButtonModule,
     OverlayBadgeModule,
-    Ripple
+    Ripple,
   ],
   templateUrl: './topbar.component.html',
   styleUrl: './topbar.component.scss',
@@ -32,12 +35,25 @@ import { Ripple } from 'primeng/ripple';
 export class TopbarComponent implements OnInit {
   items: MenuItem[] | undefined;
   showScrollButton: boolean = false;
+  email: string = environment.contactEmail;
+  phoneNumber: string = environment.phoneNumber;
 
-  constructor(public router: Router) {}
+  constructor(public router: Router, private scrollService: ScrollService) {}
   ngOnInit(): void {
     this.loadItems();
+    this.handleFragmentScroll();
   }
 
+  handleFragmentScroll(): void {
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe(() => {
+        const tree = this.router.parseUrl(this.router.url);
+        if (tree.fragment) {
+          this.scrollService.scrollToElement(tree.fragment, 100);
+        }
+      });
+  }
   loadItems() {
     this.items = [
       {
@@ -61,6 +77,14 @@ export class TopbarComponent implements OnInit {
       {
         label: 'Testimonials',
         icon: 'pi pi-comments',
+        routerLink: '/home',
+        fragment: 'testimonials',
+      },
+      {
+        label: 'Blog',
+        icon: 'pi pi-megaphone',
+        routerLink: '/home',
+        fragment: 'blog',
       },
       {
         label: 'Contacts',
@@ -72,19 +96,35 @@ export class TopbarComponent implements OnInit {
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
+    const scrollPosition = window.pageYOffset;
+
     // Mostrar el botón solo cuando se haya scrolleado más de 200px
-    this.showScrollButton = window.pageYOffset > 200;
+    this.showScrollButton = scrollPosition > 200;
+
+    // Eliminar el fragmento cuando el scroll está arriba (menos de 200px)
+    if (scrollPosition < 1 && window.location.hash) {
+      const urlWithoutFragment =
+        window.location.pathname + window.location.search;
+      history.replaceState(null, '', urlWithoutFragment);
+    }
   }
 
   scrollToTop() {
+    // Eliminar el fragmento de la URL sin navegar
+    if (window.location.hash) {
+      const urlWithoutFragment =
+        window.location.pathname + window.location.search;
+      history.replaceState(null, '', urlWithoutFragment);
+    }
+
+    // Hacer scroll suave hacia arriba
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   openWhatsApp() {
-    const phoneNumber = '573001234567'; // TODO: pasar a variable
     const message = encodeURIComponent(
-      'Hola, me gustaría obtener más información'
+      'Hello, I would like to get more information.'
     );
-    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+    window.open(`https://wa.me/${this.phoneNumber}?text=${message}`, '_blank');
   }
 }
