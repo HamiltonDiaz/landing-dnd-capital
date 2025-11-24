@@ -6,26 +6,26 @@ import { CardModule } from 'primeng/card';
 import { DividerModule } from 'primeng/divider';
 
 import { LocationDto } from 'src/app/core/dto/location.dto';
-import { LocaltionService } from 'src/app/core/services/locationservice';
+import { LocaltionService } from 'src/app/core/services/location.service';
 import { ResponsiveCarrouselOptionsDto } from 'src/app/core/dto/resposive-carrousel-options.dto';
 
 @Component({
   selector: 'app-location',
   standalone: true,
-  imports: [ButtonModule, CarouselModule, CardModule,DividerModule],
+  imports: [ButtonModule, CarouselModule, CardModule, DividerModule],
   templateUrl: './location.component.html',
   styleUrl: './location.component.scss',
   providers: [LocaltionService],
 })
 export class LocationComponent implements OnInit {
-  products: LocationDto[] =[];
+  products: LocationDto[] = [];
 
-  responsiveOptions: ResponsiveCarrouselOptionsDto[] =[];
+  responsiveOptions: ResponsiveCarrouselOptionsDto[] = [];
 
   constructor(
     public router: Router,
     private locationService: LocaltionService
-  ) {}
+  ) { }
   ngOnInit(): void {
     this.locationService.getCards().then((products) => {
       this.products = products;

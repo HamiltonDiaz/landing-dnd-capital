@@ -3,6 +3,7 @@ export const environment = {
   url: 'http://localhost:3000/api/',
   contactEmail: 'infodndcapital@gmail.com',
   phoneNumber: '447737879714',
+  address: '20 Wenlock Road, London, England, N1 7GU',
   social: {
     twitter: 'https://twitter.com/miusuario',
     facebook: 'https://facebook.com/miusuario',

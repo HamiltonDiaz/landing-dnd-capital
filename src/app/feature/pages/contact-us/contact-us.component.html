@@ -1,1 +1,198 @@
-<p>contact-us works!</p>
+<div class="flex flex-col">
+  <div class="flex bg-primary justify-center items-center p-5">
+    <span class="text-5xl text-center font-bold">
+      <i class="pi pi-address-book text-4xl"></i>
+      Contact Us
+    </span>
+  </div>
+
+  <div class="p-2 flex items-center justify-center">
+    <p-card [style]="{ width: '25rem', overflow: 'hidden' }">
+      <ng-template #header>
+        <img
+          alt="Card"
+          class="h-[15rem] w-90 p-3 mx-auto"
+          src="assets/img/ferris-wheel.webp"
+        />
+      </ng-template>
+      <ng-template #title>London City </ng-template>
+      <div class="flex flex-col gap-2">
+        <span>
+          <i class="pi pi-map-marker text-primary font-bold"></i> Address:
+          {{ address }}</span
+        >
+        <span>
+          <i class="pi pi-phone text-primary font-bold"></i> Phone:
+          {{ phoneNumber }}</span
+        >
+        <span>
+          <i class="pi pi-envelope text-primary font-bold"></i> Email:
+          {{ contactEmail }}</span
+        >
+      </div>
+    </p-card>
+  </div>
+
+  <div class="grid">
+    <div class="col-12 lg:col-6 flex flex-col w-1/2">
+      <div class="flex flex-col p-3">
+        <span class="text-lg font-bold text-[var(--custom-orange)]"> FAQ </span>
+        <span class="text-2xl md:text-5xl font-bold">
+          Frequently Asked Questions
+        </span>
+
+        <div class="w-24">
+          <p-divider styleClass="custom-divider" />
+        </div>
+
+        <span class="text-xl text-gray-500"
+          >Browse through this section or send us a message.
+        </span>
+      </div>
+
+      <p-accordion>
+        @for (item of accordionItems; track item.value) {
+        <p-accordion-panel [value]="item.value">
+          <p-accordion-header class="font-bold text-gray-700">
+            <ng-template #toggleicon let-active="active">
+              @if (active) {
+              <i class="pi pi-minus"></i>
+              } @else {
+              <i class="pi pi-plus"></i>
+              }
+            </ng-template>
+            {{ item.header }}
+          </p-accordion-header>
+          <p-accordion-content>
+            <p class="m-0">
+              {{ item.content }}
+            </p>
+          </p-accordion-content>
+        </p-accordion-panel>
+        }
+      </p-accordion>
+    </div>
+
+    <div class="col-12 lg:col-6">
+      <form
+        [formGroup]="contactForm"
+        (ngSubmit)="onSubmit()"
+        class="flex flex-col gap-4 p-4 max-w-2xl mx-auto"
+      >
+        <div class="flex flex-col gap-2">
+          <label for="name" class="font-semibold">Name *</label>
+          <input
+            pInputText
+            id="name"
+            formControlName="name"
+            placeholder="Enter your name"
+            class="w-full"
+            [class.ng-invalid]="
+              contactForm.get('name')?.invalid &&
+              (contactForm.get('name')?.dirty ||
+                contactForm.get('name')?.touched)
+            "
+            [class.ng-dirty]="contactForm.get('name')?.dirty"
+          />
+          @if (contactForm.get('name')?.invalid &&
+          (contactForm.get('name')?.dirty || contactForm.get('name')?.touched))
+          {
+          <small class="text-red-500">
+            @if (contactForm.get('name')?.hasError('required')) { Name is
+            required } @else if (contactForm.get('name')?.hasError('maxlength'))
+            { Name cannot exceed 100 characters }
+          </small>
+          }
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <label for="phone" class="font-semibold">Phone Number *</label>
+          <input
+            pInputText
+            id="phone"
+            type="tel"
+            formControlName="phone"
+            placeholder="Enter your phone number"
+            class="w-full"
+            [class.ng-invalid]="
+              contactForm.get('phone')?.invalid &&
+              (contactForm.get('phone')?.dirty ||
+                contactForm.get('phone')?.touched)
+            "
+            [class.ng-dirty]="contactForm.get('phone')?.dirty"
+          />
+          @if (contactForm.get('phone')?.invalid &&
+          (contactForm.get('phone')?.dirty ||
+          contactForm.get('phone')?.touched)) {
+          <small class="text-red-500">
+            @if (contactForm.get('phone')?.hasError('required')) { Phone number
+            is required } @else if
+            (contactForm.get('phone')?.hasError('maxlength')) { Phone number
+            cannot exceed 20 characters }
+          </small>
+          }
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <label for="email" class="font-semibold">Email *</label>
+          <input
+            pInputText
+            id="email"
+            type="email"
+            formControlName="email"
+            placeholder="Enter your email"
+            class="w-full"
+            [class.ng-invalid]="
+              contactForm.get('email')?.invalid &&
+              (contactForm.get('email')?.dirty ||
+                contactForm.get('email')?.touched)
+            "
+            [class.ng-dirty]="contactForm.get('email')?.dirty"
+          />
+          @if (contactForm.get('email')?.invalid &&
+          (contactForm.get('email')?.dirty ||
+          contactForm.get('email')?.touched)) {
+          <small class="text-red-500">
+            @if (contactForm.get('email')?.hasError('required')) { Email is
+            required } @else if (contactForm.get('email')?.hasError('email')) {
+            Please enter a valid email address } @else if
+            (contactForm.get('email')?.hasError('maxlength')) { Email cannot
+            exceed 100 characters }
+          </small>
+          }
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <label for="message" class="font-semibold">Message</label>
+          <textarea
+            pInputTextarea
+            id="message"
+            formControlName="message"
+            placeholder="Enter your message"
+            rows="3"
+            class="w-full"
+          ></textarea>
+          @if (contactForm.get('message')?.invalid &&
+          (contactForm.get('message')?.dirty ||
+          contactForm.get('message')?.touched)) {
+          <small class="text-red-500">
+            @if (contactForm.get('message')?.hasError('required')) { Message is
+            required } @else if
+            (contactForm.get('message')?.hasError('maxlength')) { Message cannot
+            exceed 800 characters }
+          </small>
+          }
+        </div>
+
+        <p-button
+          type="submit"
+          label="Send Message"
+          icon="pi pi-send"
+          [disabled]="contactForm.invalid"
+          severity="warn"
+          styleClass="w-full"
+        />
+      </form>
+    </div>
+  </div>
+</div>

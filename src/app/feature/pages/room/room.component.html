@@ -1,1 +1,52 @@
-<p>room works!</p>
+<div class="flex flex-col">
+  <div class="flex bg-primary justify-center items-center p-5">
+    <span class="text-5xl text-center font-bold">
+      <fa-icon [icon]="iconHotel"></fa-icon>
+      Rooms
+    </span>
+  </div>
+
+  <div class="flex flex-col p-5 items-center">
+    <span class="text-xl font-bold text-[var(--custom-orange)]">
+      DND Capital Rooms</span
+    >
+
+    <span class="text-5xl text-center font-bold">DND Capital´s Rooms</span>
+    <div class="w-24 mx-auto">
+      <p-divider styleClass="custom-divider" />
+    </div>
+    <span class="text-xl text-gray-500 text-center w-1/2">
+      Check out our best group tours starting shortly. If you haven't found the
+      itinerary you like, don't hesitate to get in touch with us, and we'll
+      offer an individual tour.
+    </span>
+  </div>
+  <!-- Cards -->
+
+  <div class="flex flex-wrap gap-4 justify-center">
+    @for (item of roomsList; track $index) {
+    <div class="p-card flex flex-row max-w-lg">
+      <!-- Imagen Izquierda -->
+      <div class="w-1/2">
+        <img
+          src="{{item.imageUrl}}"
+          alt="Room"
+          class="w-full h-full object-cover"
+        />
+      </div>
+
+      <!-- Texto Derecha -->
+      <div class="flex flex-col w-1/2 p-4 gap-4 justify-between">
+        <span class="text-sm font-semibold text-[var(--custom-orange)]"
+          >{{item.date}}</span
+        >
+        <span class="text-3xl font-bold">{{item.title}}</span>
+        <span class="text-lg text-gray-500">
+          {{item.description}}
+        </span>
+        <span class="text-2xl font-bold text-[var(--custom-orange)]">{{item.price}}</span>
+      </div>
+    </div>
+    }
+  </div>
+</div>
