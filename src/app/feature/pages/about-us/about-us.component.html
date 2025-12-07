@@ -1,1 +1,320 @@
-<p>about-us works!</p>
+<!-- title -->
+<div class="flex bg-primary justify-center items-center p-5">
+  <span class="text-5xl text-center font-bold">
+    <fa-icon [icon]="iconTeam"></fa-icon>
+    About Us
+  </span>
+</div>
+
+<!-- about us -->
+<div class="grid min-h-screen">
+  <div class="col-12 sm:col-12 md:col-12 lg:col-6">
+    <p-image
+      src="assets/img/about-us/town.webp"
+      alt="image-town"
+      imageClass="w-full h-full object-fit "
+    />
+  </div>
+  <div
+    class="col-12 sm:col-12 md:col-12 lg:col-6 flex flex-col gap-3 justify-content-center p-5"
+  >
+    <span class="text-lg font-bold text-[var(--custom-orange)]">
+      DND Capital Real State
+    </span>
+
+    <span class="font-bold text-3xl"> About DND Capital </span>
+
+    <div class="w-24">
+      <p-divider styleClass="custom-divider" />
+    </div>
+
+    <p class="text-2xl text-gray-500 font-semibold">
+      Since its beginnings, DND Capital Real Estate Ltd has been guided by one
+      passion — creating homes that feel right. From a single property to a
+      growing network of serviced apartments, DND’s story is one of dedication,
+      growth, and care for every gues
+    </p>
+
+    <p class="text-2xl text-gray-500">
+      At DND Capital Real Estate Ltd, we believe every guest deserves a place
+      that feels like home — wherever they go. We specialise in premium serviced
+      accommodation across London, offering beautifully designed spaces for
+      short and long stays. Our goal is simple: to combine comfort, cleanliness,
+      and convenience with a touch of style, making every stay smooth and
+      memorable.
+    </p>
+  </div>
+</div>
+
+<!-- our mission and vision -->
+<div class="flex flex-col text-center align-items-center mt-2">
+  <span class="text-5xl font-bold"> Our Mission and Vision </span>
+
+  <div class="w-24 mx-auto">
+    <p-divider styleClass="custom-divider" />
+  </div>
+  <span class="text-gray-500 text-xl font-semibold w-2/3">
+    Our goal is to help people feel at home wherever life takes them. <br />
+    We believe that every stay, every city, and every experience helps us grow,
+    connect, and discover something new.
+  </span>
+
+  <div class="mt-2">
+    <p-image
+      src="assets/img/about-us/pool.png"
+      alt="image-pool"
+      imageClass="w-full h-[500px] object-fit "
+    />
+  </div>
+</div>
+
+<!-- team -->
+<div class="mt-5 bg-amber-50 p-5">
+  <div class="flex flex-col text-center align-items-center mt-2">
+    <span class="text-lg font-bold text-[var(--custom-orange)]"> TEAM </span>
+
+    <span class="font-bold text-3xl"> Meet Our Team </span>
+    <div class="w-24 mx-auto">
+      <p-divider styleClass="custom-divider" />
+    </div>
+    <span class="text-gray-500 text-xl font-semibold w-2/3">
+      Every day, our team ensures that each guest enjoys a comfortable stay, and
+      unforgettable moments while discovering a new place.
+    </span>
+  </div>
+
+  <div class="grid">
+    <div class="col-12 md:col-12 lg:col-9">
+      <!-- carrousel -->
+      <div class="card sm:p-2 lg:p-8 lg:pt-1 sm:pt-2">
+        <p-carousel
+          [value]="teams"
+          [numVisible]="1"
+          [numScroll]="1"
+          [responsiveOptions]="responsiveOptions"
+          [showIndicators]="true"
+          [prevButtonProps]="{
+            severity: 'primary',
+            rounded: true,
+            text: false
+          }"
+          [nextButtonProps]="{
+            severity: 'primary',
+            rounded: true,
+            text: false
+          }"
+          autoplayInterval="3000"
+        >
+          <ng-template let-item #item>
+            <div class="h-full p-3">
+              <!-- 🔹 Altura fija + distribución vertical -->
+              <div
+                class="rounded m-2 p-4 bg-white flex flex-col justify-content-center h-full w-full lg:!w-1/2 shadow-2 border-round-xl mx-auto"
+              >
+                <!-- Contenido -->
+                <div class="flex flex-col flex-grow-1 justify-content-between">
+                  <!-- Imagen -->
+                  <div class="mb-3">
+                    <div
+                      class="relative w-full overflow-hidden border-round-lg"
+                    >
+                      <img
+                        src="{{ item.imageUrl }}"
+                        [alt]="item.name"
+                        class="w-full h-25rem object-cover border-round-lg"
+                      />
+                    </div>
+                  </div>
+                  <div class="flex flex-col">
+                    <div
+                      class="mb-1 text-2xl font-bold text-[var(--custom-orange)] line-height-3"
+                    >
+                      {{ item.name }}
+                    </div>
+
+                    <div
+                      class="mb-2 text-xl font-semibold text-900 line-height-3"
+                    >
+                      {{ item.position }}
+                    </div>
+
+                    <div class="mb-3 text-xl line-height-3 text-700">
+                      {{ item.description }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </p-carousel>
+      </div>
+    </div>
+
+    <!-- right text -->
+    <div class="col-12 md:col-12 lg:col-3">
+      <div class="p-card p-component p-5 flex flex-col gap-2">
+        <span class="font-bold text-[var(--custom-orange)]"> TEAM </span>
+
+        <span class="font-bold text-3xl"> About Our Team</span>
+        <div class="w-24">
+          <p-divider styleClass="custom-divider" />
+        </div>
+        <span class="text-gray-700 text-xl font-semibold">
+          Our DND team brings solid experience in property management and
+          hospitality.
+        </span>
+
+        <span class="text-gray-600 text-xl">
+          We make sure that every guest enjoys comfort, cleanliness, and a
+          welcoming experience during their stay.
+        </span>
+
+        <span class="text-gray-600 text-xl">
+          Our staff are trained, professional, and dedicated to providing
+          service you can trust.
+        </span>
+
+        <div class="flex flex-col gap-3">
+          <div class="flex align-items-center gap-2">
+            <i class="pi pi-verified text-primary font-bold"></i>
+            <span class="text-gray-600 text-xl">
+              Only experienced property and hospitality professionals;
+            </span>
+          </div>
+
+          <div class="flex align-items-center gap-2">
+            <i class="pi pi-verified text-primary font-bold"></i>
+            <span class="text-gray-600 text-xl">
+              Personalised short and long-stay solutions;
+            </span>
+          </div>
+
+          <div class="flex align-items-center gap-2">
+            <i class="pi pi-verified text-primary font-bold"></i>
+            <span class="text-gray-600 text-xl">
+              Support with check-ins, local information, and guest requests;
+            </span>
+          </div>
+          <div class="flex align-items-center gap-2">
+            <i class="pi pi-verified text-primary font-bold"></i>
+            <span class="text-gray-600 text-xl">
+              Premium serviced homes prepared with care.
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 flex flex-wrap gap-5 justify-center">
+      <!-- Professionals -->
+      <div class="flex flex-row gap-3 w-90">
+        <div
+          class="h-1/2 bg-orange-500 p-3 rounded-md flex items-center justify-center"
+        >
+          <fa-icon
+            [icon]="iconProfessional"
+            class="text-5xl text-white"
+          ></fa-icon>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-bold text-2xl">Professional Team</span>
+          <span class="text-lg">
+            Our dedicated team ensures every property is perfectly prepared and
+            every guest enjoys a seamless, comfortable stay.</span
+          >
+        </div>
+      </div>
+
+      <!-- Trusted company -->
+      <div class="flex flex-row gap-3 w-90">
+        <div
+          class="h-1/2 bg-orange-600 p-3 rounded-md flex items-center justify-center"
+        >
+          <fa-icon [icon]="iconTrusted" class="text-5xl text-white"></fa-icon>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-bold text-2xl">Trusted Company</span>
+          <span class="text-lg">
+            We have proudly provided quality serviced accommodation for years
+            and built a solid reputation for reliability, cleanliness, and
+            care.</span
+          >
+        </div>
+      </div>
+
+      <!-- Fair rates -->
+      <div class="flex flex-row gap-3 w-90">
+        <div
+          class="h-1/2 bg-green-600 p-3 rounded-md flex items-center justify-center"
+        >
+          <fa-icon [icon]="iconFair" class="text-5xl text-white"></fa-icon>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-bold text-2xl">Fair Rates</span>
+          <span class="text-lg">
+            We offer a range of premium serviced homes at competitive prices —
+            comfort and quality that fit every guest’s needs.</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- reviews -->
+<div class="flex-flex-col lg:p-8">
+  <!-- header text -->
+  <div class="flex flex-col text-center">
+    <span class="text-lg font-bold text-[var(--custom-orange)]"> REVIEWS </span>
+
+    <span class="text-2xl font-bold"> Words of Gratitude </span>
+
+    <div class="w-24 mx-auto">
+      <p-divider styleClass="custom-divider" />
+    </div>
+
+    <span
+      id="testimonials"
+      class="text-xl text-gray-500 font-semibold w-2/3 mx-auto"
+    >
+      We sincerely thank all our returning guests for their trust and loyalty.
+      Your continued choice inspires us to keep providing exceptional stays and
+      personalised service.
+    </span>
+  </div>
+
+  <!-- carrousel -->
+  <div class="card mt-5">
+    <p-carousel
+      [value]="testimonials"
+      [numVisible]="1"
+      [numScroll]="1"
+      [responsiveOptions]="responsiveOptions"
+      [showIndicators]="true"
+      [prevButtonProps]="{ severity: 'primary', rounded: true, text: false }"
+      [nextButtonProps]="{ severity: 'primary', rounded: true, text: false }"
+    >
+      <ng-template let-item #item>
+        <div class="grid bg-amber-50 rounded-xl m-5 p-0 min-h-[35rem] h-full">
+          <div class="col-12 md:col-6 md:!h-full p-0 m-0 ">
+            <p-image
+              src="{{ item.imageUrl }}"
+              [alt]="item.name"
+              imageClass="w-full h-full p-0 object-cover m-0"
+            />
+          </div>
+
+          <div class="col-12 md:col-6 flex flex-col justify-content-between gap-2 p-5">
+            <span class="text-3xl font-bold">{{ item.name }}</span>
+            <span class="text-lg font-bold text-[var(--custom-orange)]">{{ item.title }}</span>
+
+            @for (paragraph of item.longDescription; track $index) {
+              <span class="text-xl text-gray-500">{{ paragraph }}</span>
+            }
+            <span class="text-sm font-bold text-[var(--custom-orange)] mb-5">{{ item.date }}</span>
+          </div>
+        </div>
+      </ng-template>
+    </p-carousel>
+  </div>
+</div>

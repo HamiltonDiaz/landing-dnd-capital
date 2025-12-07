@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 import { CardModule } from 'primeng/card';
 import { AccordionModule } from 'primeng/accordion';
 import { DividerModule } from 'primeng/divider';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputTextarea } from 'primeng/inputtextarea';
 import { ButtonModule } from 'primeng/button';
+
 import { environment } from 'src/enviroments/environment';
 
 interface AccordionItem {
@@ -17,6 +20,7 @@ interface AccordionItem {
 @Component({
   selector: 'app-contact-us',
   imports: [
+    CommonModule,
     AccordionModule, 
     DividerModule, 
     ReactiveFormsModule,
@@ -33,8 +37,14 @@ export class ContactUsComponent implements OnInit {
   address: string = environment.address;
   contactEmail: string = environment.contactEmail;
   phoneNumber: string = environment.phoneNumber;
+  isLoading = false;
+  successMessage = '';
+  errorMessage = '';
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient
+  ) {}
 
   ngOnInit(): void {
     this.contactForm = this.fb.group({
@@ -47,9 +57,40 @@ export class ContactUsComponent implements OnInit {
 
   onSubmit(): void {
     if (this.contactForm.valid) {
-      console.log('Form submitted:', this.contactForm.value);
-      // Aquí puedes agregar la lógica para enviar el formulario
-      this.contactForm.reset();
+      this.isLoading = true;
+      this.successMessage = '';
+      this.errorMessage = '';
+
+      // Preparar los datos para Web3Forms
+      const formData = {
+        access_key: environment.web3formsKey, // Tu Access Key de Web3Forms
+        name: this.contactForm.get('name')?.value,
+        email: this.contactForm.get('email')?.value,
+        phone: this.contactForm.get('phone')?.value,
+        message: this.contactForm.get('message')?.value,
+        subject: `New Contact Form Submission from ${this.contactForm.get('name')?.value}`
+      };
+
+      // Enviar a Web3Forms API
+      this.http.post('https://api.web3forms.com/submit', formData)
+        .subscribe({
+          next: (response: any) => {
+            this.isLoading = false;
+            if (response.success) {
+              this.successMessage = 'Thank you! Your message has been sent successfully.';
+              this.contactForm.reset();
+              console.log('Form submitted successfully:', response);
+            } else {
+              this.errorMessage = 'Something went wrong. Please try again.';
+              console.error('Form submission failed:', response);
+            }
+          },
+          error: (error) => {
+            this.isLoading = false;
+            this.errorMessage = 'Failed to send message. Please try again later.';
+            console.error('Error submitting form:', error);
+          }
+        });
     } else {
       // Marcar todos los campos como touched para mostrar errores
       Object.keys(this.contactForm.controls).forEach(key => {
@@ -57,6 +98,7 @@ export class ContactUsComponent implements OnInit {
       });
     }
   }
+  
   accordionItems: AccordionItem[] = [
     {
       value: '0',

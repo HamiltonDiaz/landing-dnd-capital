@@ -1,5 +1,6 @@
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
+import { provideHttpClient } from '@angular/common/http';
 
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { providePrimeNG } from 'primeng/config';
@@ -17,6 +18,7 @@ export const appConfig: ApplicationConfig = {
         anchorScrolling: 'disabled',
       })
     ),
+    provideHttpClient(),
     provideAnimationsAsync(),
     providePrimeNG({
       theme: {
