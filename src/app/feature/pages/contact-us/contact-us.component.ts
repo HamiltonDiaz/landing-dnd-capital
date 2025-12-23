@@ -9,7 +9,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputTextarea } from 'primeng/inputtextarea';
 import { ButtonModule } from 'primeng/button';
 
-import { environment } from 'src/enviroments/environment';
+import { environment } from 'src/environments/environment';
 
 interface AccordionItem {
   value: string;

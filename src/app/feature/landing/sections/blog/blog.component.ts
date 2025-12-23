@@ -5,7 +5,7 @@ import { BlogDto } from 'src/app/core/dto/blog.dto';
 import { BlogService } from 'src/app/core/services/blog.service';
 import { DividerModule } from 'primeng/divider';
 import { ImageModule } from 'primeng/image';
-import { environment } from 'src/enviroments/environment';
+import { environment } from 'src/environments/environment';
 
 
 @Component({

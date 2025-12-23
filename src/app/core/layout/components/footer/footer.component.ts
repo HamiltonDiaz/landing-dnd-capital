@@ -7,7 +7,7 @@ import { GalleriaModule } from 'primeng/galleria';
 import { ImageModule } from 'primeng/image';
 import { PhotoService } from 'src/app/core/services/photo.service';
 import { imagesDto } from 'src/app/core/dto/images.dto';
-import { environment } from 'src/enviroments/environment';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-footer',

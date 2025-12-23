@@ -13,7 +13,7 @@ import { ButtonModule } from 'primeng/button';
 import { Ripple } from 'primeng/ripple';
 import { MessageModule } from 'primeng/message';
 import { ScrollService } from 'src/app/core/services/scroll.service';
-import { environment } from 'src/enviroments/environment';
+import { environment } from 'src/environments/environment';
 import { ConfigService } from 'src/app/core/services/config.service';
 
 @Component({
