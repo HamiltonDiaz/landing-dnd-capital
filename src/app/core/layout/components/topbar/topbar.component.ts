@@ -14,7 +14,6 @@ import { Ripple } from 'primeng/ripple';
 import { MessageModule } from 'primeng/message';
 import { ScrollService } from 'src/app/core/services/scroll.service';
 import { environment } from 'src/environments/environment';
-import { ConfigService } from 'src/app/core/services/config.service';
 
 @Component({
   selector: 'app-topbar',
@@ -42,19 +41,13 @@ export class TopbarComponent implements OnInit {
   phoneNumber: string = environment.phoneNumber;
   visibleCookie: boolean = false;
 
-  constructor(public router: Router, private scrollService: ScrollService, private configService: ConfigService) {}
-  async ngOnInit(): Promise<void> {
-    await this.configService.load();
-    this.loadInformation();
+  constructor(public router: Router, private scrollService: ScrollService) {}
+  ngOnInit(): void {
     this.loadItems();
     this.handleFragmentScroll();
+
     //this.visibleCookie = !(localStorage.getItem('cookiesAccepted') === 'true'); TODO: pendiente implementar
     
-  }
-
-  loadInformation() {
-    this.phoneNumber = this.configService.get('phoneNumber');
-    this.email = this.configService.get('contactEmail');
   }
 
   handleFragmentScroll(): void {

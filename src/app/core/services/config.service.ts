@@ -7,13 +7,10 @@ export class ConfigService {
   private config: Record<string, string> = {};
 
   async load(): Promise<void> {
-    if (environment.production) {
-        console.log('Cargando configuración desde el Worker...');
+    if (environment.production) {        
       const res = await fetch('/api/config');
       this.config = await res.json();
-    } else {
-      console.log('Cargando configuración local...');
-      // Local: usa environment.ts
+    } else {      
       this.config = {
         airbnb: environment.social.airbnb,
         bookingcom: environment.social.bookingcom,

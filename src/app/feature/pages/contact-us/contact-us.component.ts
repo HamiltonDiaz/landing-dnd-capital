@@ -10,6 +10,7 @@ import { InputTextarea } from 'primeng/inputtextarea';
 import { ButtonModule } from 'primeng/button';
 
 import { environment } from 'src/environments/environment';
+import { ConfigService } from 'src/app/core/services/config.service';
 
 interface AccordionItem {
   value: string;
@@ -43,10 +44,12 @@ export class ContactUsComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private http: HttpClient
+    private http: HttpClient,
+    private configService: ConfigService
   ) {}
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    await this.configService.load();
     this.contactForm = this.fb.group({
       name: ['', [Validators.required, Validators.maxLength(100)]],
       phone: ['', [Validators.required, Validators.maxLength(20)]],
@@ -63,7 +66,7 @@ export class ContactUsComponent implements OnInit {
 
       // Preparar los datos para Web3Forms
       const formData = {
-        access_key: environment.web3formsKey, // Tu Access Key de Web3Forms
+        access_key: this.configService.get('web3formsKey'), // Tu Access Key de Web3Forms
         name: this.contactForm.get('name')?.value,
         email: this.contactForm.get('email')?.value,
         phone: this.contactForm.get('phone')?.value,
