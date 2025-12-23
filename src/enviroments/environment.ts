@@ -4,7 +4,7 @@ export const environment = {
   contactEmail: 'infodndcapital@gmail.com',
   phoneNumber: '447737879714',
   address: '20 Wenlock Road, London, England, N1 7GU',
-  web3formsKey: '9a0fd9d1-7f05-4d35-b5d2-3c8629dc689f', // Obtén tu clave en https://web3forms.com
+  web3formsKey: '00000000000000000000', // Obtén tu clave en https://web3forms.com
   social: {
     twitter: 'https://twitter.com/miusuario',
     facebook: 'https://facebook.com/miusuario',
