@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ImageModule } from 'primeng/image';
 import { Ripple } from 'primeng/ripple';
-import { environment } from 'src/enviroments/environment';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-booking-social-media',
